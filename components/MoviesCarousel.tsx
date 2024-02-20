@@ -1,4 +1,5 @@
 import { Movie } from "@/typings"
+import MovieCard from "./MovieCard"
 
 type Props = {
     title?: string

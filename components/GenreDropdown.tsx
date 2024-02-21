@@ -11,7 +11,7 @@ import { ChevronDown } from "lucide-react"
 import Link from "next/link"
 
 async function GenreDropdown() {
-  const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
+  const url = "https://api.themoviedb.org/3/genre/movie/list?language=en"
 
   const options: RequestInit = {
     method: "GET",
@@ -24,7 +24,7 @@ async function GenreDropdown() {
     },
   }
 
-  const response = await fetch(url, options)
+  const response = await fetch(url.toString(), options)
   const data = (await response.json()) as Genres
 
   return (
@@ -37,9 +37,9 @@ async function GenreDropdown() {
         <DropdownMenuLabel>Select a Genre</DropdownMenuLabel>
         <DropdownMenuSeparator />
 
-        {data.genres?.map((genre) => (
-          <DropdownMenuItem key={genre.id}>
-            <Link href={'/genre/${genre.id}?genre=${genre.name}'}>
+        {data.genres.map((genre) => (
+          <DropdownMenuItem className="cursor-pointer" key={genre.id}>
+            <Link href={`/genre/${genre.id}?genre=${genre.name}`}>
               {genre.name}
             </Link>
           </DropdownMenuItem>

@@ -6,7 +6,7 @@ type Props = {
     keywords?: string
 }
 
- async function CarouselBannerWrapper({ id, keywords }: Props) {
+async function CarouselBannerWrapper({ id, keywords }: Props) {
     const movies = await getDiscoverMovies(id, keywords)
     
     return <CarouselsBanner movies={movies} />
